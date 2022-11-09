@@ -1,0 +1,31 @@
+
+@import '../../publics/ClassTypes.scss';
+
+.newsItem{
+    
+    width: 200px;
+    
+}
+
+.newsContainer{
+    @extend .center;
+     left: 0px;
+     right: 0px;
+ 
+}
+
+.prevContainer{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    
+    left: 0px;
+
+}
+
+.nextContainer{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    right: 0px;
+}

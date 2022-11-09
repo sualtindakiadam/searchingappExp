@@ -7,6 +7,7 @@ import TesodevLogo from "../../components/TesodevLogo";
 import Button from "../../components/Button";
 import Search from "../../components/search/Search";
 import Footer from "../../components/footer/footer";
+import News from "../../components/news/News";
 
 export default function Main() {
 
@@ -18,7 +19,7 @@ export default function Main() {
 
   return (
     <div >
-      <div>
+      <div className="bodyContainer">
         <div className="end">
           <Button text="Add new record" func={addNewRecord} />
 
@@ -33,7 +34,12 @@ export default function Main() {
 
         </div>
       </div>
+      <div className="newsContainer">
+      <News/>
+
+      </div>
       <div className="footer">
+        
         <Footer />
       </div>
 

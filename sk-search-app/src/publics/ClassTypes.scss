@@ -1,34 +1,56 @@
 $light-blue: #008CBA;
 $dark-blue: #002e79;
 
+.container {    
+     
+}
 
+.bodyContainer {    
+
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+     
+}
 .center {
     display: flex;
-    justify-content:center;
+    justify-content: center;
+    
 }
+
 .start {
     display: flex;
-    justify-content:start;
+    justify-content: start;
 }
+
 .end {
     display: flex;
-    justify-content:end;
+    justify-content: end;
 }
 
 .footer {
-    position: fixed;
+    position:fixed;
     bottom: 0px;
     left: 0px;
-    right: 0;  
-    height: 350px;
-    margin: 10px;
+    right: 0px;
+    padding: 1em;
     background-color: $light-blue;
 
 }
 
-.container {
-    margin: 15px;
+
+.newsContainer {
+    @extend .center;
+    align-items: center;
+    position:fixed;
+    bottom: 200px;
+    left: 0px;
+    right: 0px;
 }
+
+
 
 .button {
     background-color: $dark-blue;
@@ -38,6 +60,7 @@ $dark-blue: #002e79;
     font-size: 12px;
     font-weight: 700;
     border-radius: 9px;
+    height: 30px;
 
 
     &:hover {
@@ -48,7 +71,7 @@ $dark-blue: #002e79;
 
 .image {
     border-radius: 0px 10px 0px 10px;
-   
+
 }
 
 
@@ -64,9 +87,3 @@ $dark-blue: #002e79;
     height: 25px;
     border-radius: 6px;
 }
-
-
-
-
-
-

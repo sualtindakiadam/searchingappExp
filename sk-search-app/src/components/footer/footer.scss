@@ -1,38 +1,52 @@
 @import '../../publics/ClassTypes.scss';
 
-$height: 150px;
+$height: 180px;
 
 .officeImage {
+    @extend .center;
     width: $height;
-    height: 100%;
-   object-fit:contain;
-   margin-left: 10px;
+    height: $height;
+    margin: 10px;
+   
+  
 
 }
 
 .footerContainer {
     display: flex;
-    align-items: center;   
+    align-items: center; 
+     
 
 }
 
 .imageContainer {
+  
     left: 0cm;
     height: $height;
+    
 }
 
 .infoContainer {
+    box-sizing: border-box;
     display: flex;
     margin-left: 10px;
+    width: 60%;
     flex-wrap:wrap;
+    color: white;
+    min-width: 50px;
+    max-width: 60em;
 
 }
 
 .mapContainer {
     position: fixed;
+    bottom: 0cm;
     right: 0cm;
-
- 
-    background-color: red;
+   background-color: red;
+    margin-top: 10px;
+    height: $height;
+    width: $height *1.5;
+   
+    margin: 10px;
 
 }
