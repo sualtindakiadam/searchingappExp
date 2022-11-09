@@ -10,7 +10,7 @@ import "./publics/ClassTypes.scss"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <div className='container'>
+    <div >
       <App />
 
     </div>

@@ -1,0 +1,32 @@
+@import '../../publics/ClassTypes.scss';
+
+
+.headerContainer{
+    @extend .start;
+    align-items: center;
+    padding: 2em; 
+    display: flex;
+}
+
+.back{
+    @extend .center;
+
+}
+
+.formContainer{
+    @extend .center;
+    height: 200px;
+}
+
+.formItemContainer{
+    margin-bottom: 10px;
+}
+
+.input{
+    width: 300px;
+    height: 30px;
+    border-radius: 7px;
+    padding-inline: 10px;
+    margin-top: 7px;
+
+}

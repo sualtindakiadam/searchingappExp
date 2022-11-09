@@ -1,5 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
+
+
 
 import "../../publics/ClassTypes.scss"
 
@@ -9,11 +12,12 @@ import Search from "../../components/search/Search";
 import Footer from "../../components/footer/footer";
 import News from "../../components/news/News";
 
+
 export default function Main() {
+  const navigate = useNavigate()
 
-  const addNewRecord = () => {
-
-    alert("add new record")
+  function addNewRecord(e) {
+    navigate('/addLink')
 
   }
 
@@ -35,11 +39,11 @@ export default function Main() {
         </div>
       </div>
       <div className="newsContainer">
-      <News/>
+        <News />
 
       </div>
       <div className="footer">
-        
+
         <Footer />
       </div>
 

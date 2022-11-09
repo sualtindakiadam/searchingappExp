@@ -2,17 +2,14 @@ $light-blue: #008CBA;
 $dark-blue: #002e79;
 
 .container {    
-     
 }
 
 .bodyContainer {    
-
     position:fixed;
     top: 0px;
     left: 0px;
     right: 0px;
-
-     
+    margin: 10px;    
 }
 .center {
     display: flex;

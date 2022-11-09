@@ -11,21 +11,28 @@
     @extend .center;
      left: 0px;
      right: 0px;
+
+     
  
+}
+.container1{
+   
+   height: 300px;
+    width: 100%;
+    margin: 20px;
 }
 
 .prevContainer{
     display: flex;
     align-items: center;
-    position: fixed;
-    
-    left: 0px;
+ 
 
 }
 
 .nextContainer{
     display: flex;
-    position: fixed;
     align-items: center;
-    right: 0px;
+ 
 }
+
+

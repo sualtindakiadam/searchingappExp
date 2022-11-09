@@ -48,30 +48,37 @@ export default function News() {
     }
 
     return (
-        <div className="newsContainer" >
+        <div className="container1">
 
-            <div className="prevContainer">
+            <h1>Top News</h1>
 
-                <Button text={<GrPrevious />} func={prevPage} />
+            <div className="newsContainer" >
 
-            </div>
+                <div className="prevContainer">
 
-            {data.slice(first, last).map((d) => {
-                return < div className="newsItem"  >
-                    <img src={d.image} className="officeImage" />
-                    <p>{d.title}</p>
+                    <Button text={<GrPrevious size={20} />} func={prevPage} />
 
                 </div>
-            })}
 
-            <div className="nextContainer">
-                <Button text={<GrNext />} func={nextPage} />
+                {data.slice(first, last).map((d) => {
+                    return (
+                        < div className="newsItem"  >
+                            <img src={d.image} className="officeImage" />
+                            <p>{d.title}</p>
+                        </div>)
+                })}
+
+                <div className="nextContainer">
+                    <Button text={<GrNext size={20} />} func={nextPage} />
+
+                </div>
+
+
+
 
             </div>
-
-
-
-
         </div>
+
+
     )
 }
