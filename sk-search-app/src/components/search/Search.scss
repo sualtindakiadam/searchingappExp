@@ -1,0 +1,59 @@
+@import '../../publics/ClassTypes.scss';
+
+.searchedItem {
+    margin-top: 10px;
+    margin-inline: 50px;
+    
+}
+
+.searchedArea {  
+    border-style: solid;
+    border-color:  lightslategrey;
+    border-width: 1px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-inline: 50px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    
+}
+
+
+.deneme {
+    @extend .center;
+    width: 500px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: lightgrey;
+    padding-bottom: 10px;   
+}
+
+.icon1{
+   
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+.searchIcon {
+    position: relative;
+    margin-right: -23px;
+    margin-bottom: -3px;
+}
+
+.title {
+    size: 60px;
+}
+.showMore {
+    @extend .center;
+    font-size:15px;
+    font-weight: 500;
+    margin-top: 5px;
+
+}
+
+.titleb {
+   text-align: left;
+   margin-left: 20px;
+
+}

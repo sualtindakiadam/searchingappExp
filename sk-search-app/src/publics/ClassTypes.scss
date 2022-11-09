@@ -1,0 +1,72 @@
+$light-blue: #008CBA;
+$dark-blue: #002e79;
+
+
+.center {
+    display: flex;
+    justify-content:center;
+}
+.start {
+    display: flex;
+    justify-content:start;
+}
+.end {
+    display: flex;
+    justify-content:end;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0;  
+    height: 350px;
+    margin: 10px;
+    background-color: $light-blue;
+
+}
+
+.container {
+    margin: 15px;
+}
+
+.button {
+    background-color: $dark-blue;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 9px;
+
+
+    &:hover {
+        background-color: $light-blue;
+    }
+
+}
+
+.image {
+    border-radius: 0px 10px 0px 10px;
+   
+}
+
+
+
+
+
+
+.searchInput {
+    border-style: solid;
+    border-color: $dark-blue;
+    padding-left: 30px;
+    width: 400px;
+    height: 25px;
+    border-radius: 6px;
+}
+
+
+
+
+
+
