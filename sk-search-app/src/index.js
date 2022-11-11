@@ -5,15 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+import {Provider} from 'react-redux';
+import configureStore from './redux/configureStore';
+
+
 import "./publics/ClassTypes.scss"
+
+const store = configureStore()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <div >
+    <Provider store={store}>
       <App />
 
-    </div>
+    </Provider>
 
   </BrowserRouter>
 );
@@ -22,3 +28,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

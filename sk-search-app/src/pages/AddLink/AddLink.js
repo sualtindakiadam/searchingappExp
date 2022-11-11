@@ -3,9 +3,12 @@ import { NavLink } from "react-router-dom";
 import "./AddLink.scss"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import Button from "../../components/Button";
-
+import Footer from "../../components/footer/footer";
 
 import TesodevLogo from "../../components/TesodevLogo";
+import AlertComp from "../../components/alert/AlertComp";
+import { useSelector,useDispatch } from "react-redux";
+import { setDeneme } from '../../redux/actions/denemeActions'
 
 
 
@@ -20,10 +23,41 @@ const titles = ([
 
 export default function AddLink() {
 
+    const denemeData = useSelector(state => state.getDeneme)
+    const dispatch = useDispatch()
+
+
 
     const addClick = () => {
-        alert("added")
+
+
+        /*return(
+            <div className="alertContainer">
+                <AlertComp text="deneme"/>
+            </div>
+        )*/
+
+        denemeData[0].id = denemeData[0].id +1
+        dispatch(setDeneme([denemeData[0]]))
+
+      
     }
+
+    const onClicNext = () => {
+
+/*
+        talepData[0].Ilce = ilceKodu
+        talepData[0].KoyMahalle = koyMahalleKodu
+        talepData[0].CBSM = cbsmKodu
+        talepData[0].pageType = talepData[0].pageType + 1
+
+
+        dispatch(setTalepData([talepData[0]]))
+*/
+    }
+
+  
+
     const inputType = (event, type) => {
         if (type == "text") {
 
@@ -39,7 +73,7 @@ export default function AddLink() {
     }
 
 
-    const emailValidation = ()=>{
+    const emailValidation = () => {
         //const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         /*if(!this.state.email || regex.test(this.state.email) === false){
             this.setState({
@@ -53,6 +87,7 @@ export default function AddLink() {
 
     return (
         <div>
+            <h1>{denemeData[0].id}</h1>
             <div className="headerContainer">
                 <TesodevLogo />
                 <NavLink className="back" to="/" style={{ color: 'black', fontSize: 20, marginLeft: 20, textDecoration: 'none' }}>
@@ -83,6 +118,8 @@ export default function AddLink() {
                 </div>
 
             </div>
+            
+       
 
 
 
