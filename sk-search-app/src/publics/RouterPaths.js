@@ -1,2 +1,2 @@
 export const main = '/'
-export const addLink = '/addLink'
+export const AddNewRecord = '/AddNewRecord'

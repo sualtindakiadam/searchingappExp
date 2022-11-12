@@ -1,35 +1,50 @@
 import React from "react";
+
 import { NavLink } from "react-router-dom";
-import "./AddLink.scss"
+import "./AddNewRecord.scss"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import Button from "../../components/Button";
 import Footer from "../../components/footer/footer";
 
 import TesodevLogo from "../../components/TesodevLogo";
 import AlertComp from "../../components/alert/AlertComp";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setDeneme } from '../../redux/actions/denemeActions'
-
+import { setMockData } from "../../redux/actions/setMocData";
 
 
 
 const titles = ([
-    { id: 1, title: "Name Surname", minChar: "4", maxChar: "60", inputType: "text" },
-    { id: 2, title: "Country", minChar: "2", maxChar: "40", inputType: "text" },
-    { id: 3, title: "City", minChar: "2", maxChar: "40", inputType: "text" },
-    { id: 4, title: "EMail", minChar: "4", maxChar: "60", inputType: "email" },
+    { id: 0, title: "Name Surname", minChar: "4", maxChar: "60", inputType: "text" },
+    { id: 1, title: "Company", minChar: "4", maxChar: "60", inputType: "text" },
+    { id: 2, title: "EMail", minChar: "4", maxChar: "60", inputType: "email" },
+    { id: 3, title: "Date", minChar: "4", maxChar: "60", inputType: "email" },
+    { id: 4, title: "Country", minChar: "2", maxChar: "40", inputType: "text" },
+    { id: 5, title: "City", minChar: "2", maxChar: "40", inputType: "text" },
 
 ])
 
-export default function AddLink() {
+
+export default function AddNewRecord() {
 
     const denemeData = useSelector(state => state.getDeneme)
+    const mockDatainRedux = useSelector(state => state.getMockData)
+
     const dispatch = useDispatch()
+
+    const dataForSave = [titles.length]
+
 
 
 
     const addClick = () => {
+        console.log("addClick")
+        mockDatainRedux[0].data.push(dataForSave)
+        console.log(mockDatainRedux[0].data)
 
+        dispatch(setMockData([mockDatainRedux[0]]))
+
+        localStorage.setItem("ff",JSON.stringify(mockDatainRedux[0]))
 
         /*return(
             <div className="alertContainer">
@@ -37,26 +52,12 @@ export default function AddLink() {
             </div>
         )*/
 
-        denemeData[0].id = denemeData[0].id +1
+        /*denemeData[0].id = denemeData[0].id +1
         dispatch(setDeneme([denemeData[0]]))
-
-      
-    }
-
-    const onClicNext = () => {
-
-/*
-        talepData[0].Ilce = ilceKodu
-        talepData[0].KoyMahalle = koyMahalleKodu
-        talepData[0].CBSM = cbsmKodu
-        talepData[0].pageType = talepData[0].pageType + 1
-
-
-        dispatch(setTalepData([talepData[0]]))
 */
+
     }
 
-  
 
     const inputType = (event, type) => {
         if (type == "text") {
@@ -104,7 +105,7 @@ export default function AddLink() {
                                 <input
                                     type={d.inputType}
                                     className="input"
-                                    onChange={(e) => console.log(d.title)}
+                                    onChange={(e) => dataForSave[d.id] = e.target.value}
                                     placeholder={"Enter " + d.title}
                                     onKeyPress={(event) => inputType(event, d.inputType)}
                                 />
@@ -118,8 +119,8 @@ export default function AddLink() {
                 </div>
 
             </div>
-            
-       
+
+
 
 
 
