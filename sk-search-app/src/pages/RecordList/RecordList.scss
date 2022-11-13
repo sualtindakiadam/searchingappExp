@@ -1,0 +1,71 @@
+@import '../../publics/ClassTypes.scss';
+
+
+.headerContainer1{
+ 
+    display: flex;
+align-items: center;
+    padding-inline: 10px;
+}
+
+
+.logoContainer1{
+
+    @extend .start;
+    height: 50px;
+
+}
+
+.searchContainer1{
+    @extend .center;
+    align-items: center;
+
+    height: 100px;
+}
+
+.addNewContainer1{
+    position: fixed;
+  
+    right: 0px;
+   
+}
+
+.listBodyContainer{
+    @extend .center;
+    margin-top: 30px;
+   
+}
+
+.listItemContainer{
+    height: 50px;
+}
+.nameDateContainer{
+    text-align: right;
+   
+}
+.paginationContainer{
+    @extend .center;
+    margin-top: 20px;
+   
+}
+
+.fullListContainer{
+    height: 500px;
+}
+.pageNumberContainer{
+    @extend .center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: 1px;
+    border-color: darkgrey;
+    border-style: solid;
+    margin: 3px;
+    border-radius: 5px;
+}
+.nextPrewContainer{
+    @extend .center;
+    align-items: center;
+    margin-inline: 20px;
+}
+

@@ -88,10 +88,9 @@ export default function AddNewRecord() {
 
     return (
         <div>
-            <h1>{denemeData[0].id}</h1>
             <div className="headerContainer">
                 <TesodevLogo />
-                <NavLink className="back" to="/" style={{ color: 'black', fontSize: 20, marginLeft: 20, textDecoration: 'none' }}>
+                <NavLink className="back" to={-1} style={{ color: 'black', fontSize: 20, marginLeft: 20, textDecoration: 'none' }}>
                     {<AiOutlineArrowLeft size={25} style={{ alignItem: 'center', marginRight: 10 }} />}  Return to List Page
 
                 </NavLink>

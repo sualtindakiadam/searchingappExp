@@ -52,11 +52,12 @@ export default function News() {
 
             <h1>Top News</h1>
 
+
             <div className="newsContainer" >
+                <div className="nextPrewContainer">
 
-                <div className="prevContainer">
 
-                    <Button text={<GrPrevious size={20} />} func={prevPage} />
+                    <GrPrevious size={20} onClick={prevPage} />
 
                 </div>
 
@@ -68,13 +69,9 @@ export default function News() {
                         </div>)
                 })}
 
-                <div className="nextContainer">
-                    <Button text={<GrNext size={20} />} func={nextPage} />
-
+                <div className="nextPrewContainer">
+                    <GrNext size={20} onClick={nextPage} />
                 </div>
-
-
-
 
             </div>
         </div>

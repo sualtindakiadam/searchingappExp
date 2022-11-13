@@ -13,13 +13,12 @@ export default function Search(props) {
 
     return (
         <div>
-
-            <center style={{ marginTop: 20 }}>
-
+            <center >
                 <div style={{ width: 550 }}>
+                  {props.searchType == "little" ?
                     <div className="titleb">
                         Find in records
-                    </div>
+                    </div>: null}
                     <BsSearch size="15" className="searchIcon" />
                     <input
                         id='dogrulanacakKod'
@@ -30,92 +29,93 @@ export default function Search(props) {
                     </input>
                     <Button text="Search" func={console.log("searched")} />
                 </div>
-
             </center>
 
-            <div className="searchedArea">
+            {
+                props.searchType == "little" ?
+                    <div className="searchedArea" >
 
-                <div className="searchedItem">
+                        <div className="searchedItem">
 
-                    {/*searchedRes.map((d) => {
+                            {/*searchedRes.map((d) => {
                              return < div className="user" style={{ color: "black", backgroundColor: 'rgba(0,0,0,0.1)', marginBottom: 5, overflowX: 'auto' }} > {d.IlceRef} - {d.IlceAdi} - ( {d.KadastroMahalleAd} - {d.KadastroAlan} m2 )- ({d.TapuMahalleAd} - {d.TapuAlan}) - {d.TapuCinsAciklama} </div>
                             })*/}
 
-                    <div className="deneme" >
-                        <GoLocation size="20" className="icon1" />
+                            <div className="deneme" >
+                                <GoLocation size="20" className="icon1" />
 
-                        <div style={{ flex: 1 }}>
-                            <text style={{ fontSize: 15 }}>
-                                18th Street Brewery
-                            </text>
-                            <br />
-                            <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
-                                asdas
-                            </text>
+                                <div style={{ flex: 1 }}>
+                                    <text style={{ fontSize: 15 }}>
+                                        18th Street Brewery
+                                    </text>
+                                    <br />
+                                    <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
+                                        asdas
+                                    </text>
 
+
+
+                                </div>
+
+                            </div>
 
 
                         </div>
+                        <div className="searchedItem">
 
-                    </div>
-
-
-                </div>
-                <div className="searchedItem">
-
-                    {/*searchedRes.map((d) => {
+                            {/*searchedRes.map((d) => {
                              return < div className="user" style={{ color: "black", backgroundColor: 'rgba(0,0,0,0.1)', marginBottom: 5, overflowX: 'auto' }} > {d.IlceRef} - {d.IlceAdi} - ( {d.KadastroMahalleAd} - {d.KadastroAlan} m2 )- ({d.TapuMahalleAd} - {d.TapuAlan}) - {d.TapuCinsAciklama} </div>
                             })*/}
 
-                    <div className="deneme" >
-                        <GoLocation size="20" className="icon1" />
+                            <div className="deneme" >
+                                <GoLocation size="20" className="icon1" />
 
-                        <div style={{ flex: 1 }}>
-                            <text style={{ fontSize: 15 }}>
-                                18th Street Brewery
-                            </text>
-                            <br />
-                            <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
-                                asdas
-                            </text>
+                                <div style={{ flex: 1 }}>
+                                    <text style={{ fontSize: 15 }}>
+                                        18th Street Brewery
+                                    </text>
+                                    <br />
+                                    <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
+                                        asdas
+                                    </text>
+
+                                </div>
+
+                            </div>
 
                         </div>
+                        <div className="searchedItem">
 
-                    </div>
-
-                </div>
-                <div className="searchedItem">
-
-                    {/*searchedRes.map((d) => {
+                            {/*searchedRes.map((d) => {
          return < div className="user" style={{ color: "black", backgroundColor: 'rgba(0,0,0,0.1)', marginBottom: 5, overflowX: 'auto' }} > {d.IlceRef} - {d.IlceAdi} - ( {d.KadastroMahalleAd} - {d.KadastroAlan} m2 )- ({d.TapuMahalleAd} - {d.TapuAlan}) - {d.TapuCinsAciklama} </div>
         })*/}
 
-                    <div className="deneme" >
-                        <GoLocation size="20" className="icon1" />
+                            <div className="deneme" >
+                                <GoLocation size="20" className="icon1" />
 
-                        <div style={{ flex: 1 }}>
-                            <text style={{ fontSize: 15 }}>
-                                18th Street Brewery
-                            </text>
-                            <br />
-                            <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
-                                asdas
-                            </text>
+                                <div style={{ flex: 1 }}>
+                                    <text style={{ fontSize: 15 }}>
+                                        18th Street Brewery
+                                    </text>
+                                    <br />
+                                    <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
+                                        asdas
+                                    </text>
+
+                                </div>
+
+                            </div>
 
                         </div>
-
-                    </div>
-
-                </div>
-                <div className="showMore" onClick={() => alert("shoew more")}>
-                    Show more...
-                </div>
+                        <div className="showMore" onClick={() => alert("shoew more")}>
+                            Show more...
+                        </div>
 
 
 
-            </div>
+                    </div> : null
 
-
+            }
 
 
 

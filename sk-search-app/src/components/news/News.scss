@@ -16,23 +16,22 @@
  
 }
 .container1{
-   
+
    height: 300px;
     width: 100%;
-    margin: 20px;
+    padding: 20px;
 }
 
-.prevContainer{
-    display: flex;
-    align-items: center;
- 
 
-}
 
-.nextContainer{
-    display: flex;
+.nextPrewContainer{
+    width: 30px;;
+    height: 30px;
+    @extend .center;
     align-items: center;
- 
+    background-color:rgb(212, 206, 206);
+    border-radius: 100px;
+    
 }
 
 

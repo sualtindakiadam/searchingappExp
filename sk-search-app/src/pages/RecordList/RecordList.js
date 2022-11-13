@@ -1,0 +1,112 @@
+import React, { useEffect, useState } from "react";
+import TesodevLogo from "../../components/TesodevLogo";
+import Search from "../../components/search/Search";
+import "./RecordList.scss"
+import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { GoLocation } from "react-icons/go"
+import { GrNext, GrPrevious } from "react-icons/gr"
+import Footer from "../../components/footer/footer";
+
+
+
+export default function RecordList() {
+    const navigate = useNavigate()
+    const data = useSelector(state => state.getMockData)[0].data
+    const pageSize = 10;
+    const totalPage = Math.ceil(data.length / 10)
+    const [selectedPage, setSelectedPage] = useState(0)
+
+
+    function addNewRecord(e) {
+        navigate("/AddNewRecord")
+    }
+    useEffect(() => {
+        console.log("totalpage");
+        console.log(totalPage)
+    });
+
+    const prevClick = () => {
+        console.log("prev");
+        if (selectedPage > 0) {
+            setSelectedPage(selectedPage - 1)
+
+        }
+    }
+
+    const nextClick = () => {
+        console.log(selectedPage);
+        if (selectedPage < totalPage - 1) {
+            setSelectedPage(selectedPage + 1)
+
+        }
+    }
+
+    return (
+        <div>
+            <div className="headerContainer1">
+                <div className="logoContainer1">
+                    <TesodevLogo />
+                </div>
+                <div className="searchContainer1">
+                    <Search searchType="all" />
+                </div>
+                <div className="addNewContainer1">
+                    <Button text="Add new record" func={addNewRecord} />
+                </div>
+            </div>
+            <div className="listBodyContainer">
+                <div>
+                    <div className="fullListContainer">
+                        {data.slice(pageSize * selectedPage, pageSize * (selectedPage + 1)).map((d) => {
+                            return (<div className="listItemContainer">
+                                <div className="deneme" >
+                                    <GoLocation size="20" className="icon1" />
+                                    <div style={{ flex: 1 }}>
+                                        <text style={{ fontSize: 15 }}>
+                                            {d[1]}
+                                        </text>
+                                        <br />
+                                        <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
+                                            {d[5]}, {d[4]}
+                                        </text>
+                                    </div>
+                                    <div className="nameDateContainer">
+                                        <text style={{ fontSize: 13, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
+                                            {d[0]}<br />{d[3]}
+                                        </text>
+                                    </div>
+                                </div>
+                            </div>)
+                        })}
+                    </div>
+
+
+                    <div className="paginationContainer">
+                        <div className="nextPrewContainer">
+                            <GrPrevious onClick={() => prevClick()} />
+
+                        </div>
+                        {data.slice(0, totalPage).map((d, index) => {
+                            return (<div style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }} className="pageNumberContainer">
+                                {index + 1}
+                            </div>)
+                        })}
+                        <div className="nextPrewContainer">
+
+                            <GrNext onClick={() => nextClick()} />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="footer">
+
+                <Footer />
+            </div>
+        </div>
+
+
+    )
+}
