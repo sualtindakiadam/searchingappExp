@@ -25,9 +25,7 @@ align-items: center;
 
 .addNewContainer1{
     position: fixed;
-  
-    right: 0px;
-   
+    right: 0px;  
 }
 
 .listBodyContainer{
@@ -62,10 +60,46 @@ align-items: center;
     border-style: solid;
     margin: 3px;
     border-radius: 5px;
+    
+
 }
 .nextPrewContainer{
     @extend .center;
     align-items: center;
     margin-inline: 20px;
+   
+}
+.orderByContainer{
+    right: 10%;
+    position: fixed;
+    
+}
+
+.orderListContainer{
+    margin-top: 10px;
+    width: 150px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: darkgray;
+    border-style: solid;
+    border-radius: 10px;
+    :hover{
+        background-color: darkgray;
+        border-radius: 10px;
+        @extend .center;
+        color: white;
+    }
+}
+
+.orderByItemContainer{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: lightgrey;
+    margin-bottom: 3px;;
+    
+}
+
+.orderByContainer{
+    
 }
 

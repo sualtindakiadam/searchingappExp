@@ -8,15 +8,20 @@ import { useSelector } from "react-redux";
 import { GoLocation } from "react-icons/go"
 import { GrNext, GrPrevious } from "react-icons/gr"
 import Footer from "../../components/footer/footer";
+import moment from 'moment'
 
 
 
 export default function RecordList() {
     const navigate = useNavigate()
-    const data = useSelector(state => state.getMockData)[0].data
+    const [data, setData] = useState(useSelector(state => state.getMockData)[0].data)
     const pageSize = 10;
     const totalPage = Math.ceil(data.length / 10)
     const [selectedPage, setSelectedPage] = useState(0)
+
+    const [orderBy, setOrderBy] = useState(["Order by", "Name Ascending", "Name Descending", "Year Ascending", "Year Descending"])
+    const [orderType, setOrderType] = useState(0)
+    const [enabledOrderByList, setEnabledOrderByList] = useState(false)
 
 
     function addNewRecord(e) {
@@ -42,6 +47,53 @@ export default function RecordList() {
 
         }
     }
+    const orderByBtnClk = () => {
+        setEnabledOrderByList(!enabledOrderByList)
+    }
+    const changeOrderBy = (orderById) => {
+        setEnabledOrderByList(!enabledOrderByList)
+        setOrderType(orderById)
+        console.log("change order by ")
+
+
+
+
+        switch (orderById) {
+            case 1:
+                console.log("name asc order by");
+                setData(data.sort())
+                break;
+            case 2:
+                console.log("name desc order by");
+                setData(data.sort((a, b) => { return b > a }));
+
+                break;
+            case 3:
+
+                console.log("name desc order by");
+                setData(data.sort(function (a, b) { 
+                    const datea = moment(a[3]).format('YYY/MM/DD') //moment(a[3], 'YYY/MM/DD').format()
+                    const dateb = moment(b[3]).format('YYY/MM/DD') //moment(b[3], 'YYY/MM/DD').format()
+                    console.log(datea , " ------ ", dateb);
+                    return datea > dateb}));
+
+                break;
+            case 4:
+
+                console.log("name desc order by");
+                setData(data.sort(function (a, b) { 
+                    const datea = moment(a[3]).format('YYY/MM/DD') //moment(a[3], 'YYY/MM/DD').format()
+                    const dateb = moment(b[3]).format('YYY/MM/DD') //moment(b[3], 'YYY/MM/DD').format()
+                    console.log(datea , " ------ ", dateb);
+                    return dateb > datea}));
+
+                break;
+
+            default:
+                break;
+        }
+
+    }
 
     return (
         <div>
@@ -56,8 +108,26 @@ export default function RecordList() {
                     <Button text="Add new record" func={addNewRecord} />
                 </div>
             </div>
+            <div className="orderByContainer">
+                <div>
+                    <Button text={orderBy[orderType]} func={orderByBtnClk} />
+                    {enabledOrderByList ?
+                        <div className="orderListContainer">
+                            {orderBy.slice(1).map((d, index) => {
+                                return (
+                                    <div className="orderByItemContainer" style={{ textAlign: 'left' }} onClick={() => changeOrderBy(index + 1)}>
+                                        {d}
+                                    </div>
+                                )
+                            })}
+                        </div> : null}
+
+                </div>
+
+            </div>
             <div className="listBodyContainer">
                 <div>
+
                     <div className="fullListContainer">
                         {data.slice(pageSize * selectedPage, pageSize * (selectedPage + 1)).map((d) => {
                             return (<div className="listItemContainer">
@@ -89,7 +159,10 @@ export default function RecordList() {
 
                         </div>
                         {data.slice(0, totalPage).map((d, index) => {
-                            return (<div style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }} className="pageNumberContainer">
+                            return (<div
+                                style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }}
+                                className="pageNumberContainer"
+                                onClick={() => setSelectedPage(index)}>
                                 {index + 1}
                             </div>)
                         })}
