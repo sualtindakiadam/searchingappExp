@@ -1,42 +1,38 @@
 import React, { useEffect, useState } from "react";
-import TesodevLogo from "../../components/TesodevLogo";
-import Search from "../../components/search/Search";
-import "./RecordList.scss"
-import Button from "../../components/Button";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go"
 import { GrNext, GrPrevious } from "react-icons/gr"
-import Footer from "../../components/footer/footer";
+
+import "./RecordList.scss"
 import moment from 'moment'
+
+import TesodevLogo from "../../components/TesodevLogo";
+import Search from "../../components/search/Search";
+import Button from "../../components/Button";
+import Footer from "../../components/footer/footer";
 
 
 
 export default function RecordList() {
     const navigate = useNavigate()
-    const [data, setData] = useState(useSelector(state => state.getMockData)[0].data)
+    const [data, setData] = useState(useSelector(state => state.getSearchedData))
     const pageSize = 10;
     const totalPage = Math.ceil(data.length / 10)
     const [selectedPage, setSelectedPage] = useState(0)
-
+    const maxTotalPageSize = 3;
     const [orderBy, setOrderBy] = useState(["Order by", "Name Ascending", "Name Descending", "Year Ascending", "Year Descending"])
     const [orderType, setOrderType] = useState(0)
     const [enabledOrderByList, setEnabledOrderByList] = useState(false)
 
-    const {state} = useLocation()
-    const { sList } = state;
+  
     function addNewRecord(e) {
         navigate("/AddNewRecord")
     }
     useEffect(() => {
         console.log("totalpage");
         console.log(totalPage)
-        if (sList.length > 0){
-            console.log(sList);
-            setData(sList)
-
-
-        }
+   
     });
 
     const prevClick = () => {
@@ -130,9 +126,7 @@ export default function RecordList() {
                                 )
                             })}
                         </div> : null}
-
                 </div>
-
             </div>
             <div className="listBodyContainer">
                 <div>
@@ -168,12 +162,14 @@ export default function RecordList() {
 
                         </div>
                         {data.slice(0, totalPage).map((d, index) => {
-                            return (<div
-                                style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }}
-                                className="pageNumberContainer"
-                                onClick={() => setSelectedPage(index)}>
-                                {index + 1}
-                            </div>)
+                            if ((index < selectedPage + 4 && index > selectedPage - 4) || index == totalPage - 1 || index == 0) {
+                                return (<div
+                                    style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }}
+                                    className="pageNumberContainer"
+                                    onClick={() => setSelectedPage(index)}>
+                                    {index + 1}
+                                </div>)
+                            } else if (index == totalPage - 2|| index==1) { return <div>.........</div> }
                         })}
                         <div className="nextPrewContainer">
 

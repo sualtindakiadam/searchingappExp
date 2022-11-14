@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import "./Search.scss"
+import {setSearchedData} from '../../redux/actions/setSearchedData'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
@@ -9,31 +10,27 @@ import { useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs"
 import { GoLocation } from "react-icons/go"
 export default function Search(props) {
-
-    const [searchedList, setSearchedList] = useState([])
+    const dispatch = useDispatch()
+    const searchedData = useSelector(state=> state.getSearchedData)
     const [searched, setSearched] = useState([])
     const navigate = useNavigate()
 
 
     const searchBtnClk = () => {
         console.log("searched")
-        console.log(props.mockData.filter((mockData) => {
-            return mockData[0].toLowerCase().startsWith(searched.toLowerCase()); //başından aramak için
-            //return mockData[0].toLowerCase().includes(searched.toLowerCase()); içinde aramak için
-
-        }))
+        console.log(searchedData);
 
 
-        setSearchedList(props.mockData.filter((mockData) => {
-            return mockData[0].toLowerCase().startsWith(searched.toLowerCase()); //başından aramak için
-            //return mockData[0].toLowerCase().includes(searched.toLowerCase()); içinde aramak için
+        dispatch(setSearchedData(props.mockData.filter((mockData) => {
+            //return mockData[0].toLowerCase().startsWith(searched.toLowerCase()); //başından aramak için
+            return mockData[0].toLowerCase().includes(searched.toLowerCase()); //içinde aramak için
 
-        }))
+        })))
 
     }
 
     const showMore = () => {
-        navigate('/RecordList',{ state: { sList: searchedList  } })
+        navigate('/RecordList')
     }
 
     return (
@@ -56,12 +53,12 @@ export default function Search(props) {
                 </div>
             </center>
 
-            {searchedList.length > 0 && props.searchType == "little" ?
+            {searchedData.length > 0 && props.searchType == "little" ?
                 <div className="searchedArea" >
 
                     <div className="searchedItem">
 
-                        {searchedList.slice(0, 3).map((d) => {
+                        {searchedData.slice(0, 3).map((d) => {
                             return (<div className="listItemContainer">
                                 <div className="deneme" >
                                     <GoLocation size="20" className="icon1" />

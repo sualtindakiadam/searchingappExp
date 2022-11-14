@@ -9,7 +9,6 @@ import Footer from "../../components/footer/footer";
 import TesodevLogo from "../../components/TesodevLogo";
 import AlertComp from "../../components/alert/AlertComp";
 import { useSelector, useDispatch } from "react-redux";
-import { setDeneme } from '../../redux/actions/denemeActions'
 import { setMockData } from "../../redux/actions/setMocData";
 
 
@@ -27,7 +26,6 @@ const titles = ([
 
 export default function AddNewRecord() {
 
-    const denemeData = useSelector(state => state.getDeneme)
     const mockDatainRedux = useSelector(state => state.getMockData)
 
     const dispatch = useDispatch()
@@ -52,9 +50,6 @@ export default function AddNewRecord() {
             </div>
         )*/
 
-        /*denemeData[0].id = denemeData[0].id +1
-        dispatch(setDeneme([denemeData[0]]))
-*/
 
     }
 
