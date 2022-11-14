@@ -3,7 +3,7 @@ import TesodevLogo from "../../components/TesodevLogo";
 import Search from "../../components/search/Search";
 import "./RecordList.scss"
 import Button from "../../components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { GoLocation } from "react-icons/go"
 import { GrNext, GrPrevious } from "react-icons/gr"
@@ -23,13 +23,20 @@ export default function RecordList() {
     const [orderType, setOrderType] = useState(0)
     const [enabledOrderByList, setEnabledOrderByList] = useState(false)
 
-
+    const {state} = useLocation()
+    const { sList } = state;
     function addNewRecord(e) {
         navigate("/AddNewRecord")
     }
     useEffect(() => {
         console.log("totalpage");
         console.log(totalPage)
+        if (sList.length > 0){
+            console.log(sList);
+            setData(sList)
+
+
+        }
     });
 
     const prevClick = () => {
@@ -71,21 +78,23 @@ export default function RecordList() {
             case 3:
 
                 console.log("name desc order by");
-                setData(data.sort(function (a, b) { 
+                setData(data.sort(function (a, b) {
                     const datea = moment(a[3]).format('YYY/MM/DD') //moment(a[3], 'YYY/MM/DD').format()
                     const dateb = moment(b[3]).format('YYY/MM/DD') //moment(b[3], 'YYY/MM/DD').format()
-                    console.log(datea , " ------ ", dateb);
-                    return datea > dateb}));
+                    console.log(datea, " ------ ", dateb);
+                    return datea > dateb
+                }));
 
                 break;
             case 4:
 
                 console.log("name desc order by");
-                setData(data.sort(function (a, b) { 
+                setData(data.sort(function (a, b) {
                     const datea = moment(a[3]).format('YYY/MM/DD') //moment(a[3], 'YYY/MM/DD').format()
                     const dateb = moment(b[3]).format('YYY/MM/DD') //moment(b[3], 'YYY/MM/DD').format()
-                    console.log(datea , " ------ ", dateb);
-                    return dateb > datea}));
+                    console.log(datea, " ------ ", dateb);
+                    return dateb > datea
+                }));
 
                 break;
 

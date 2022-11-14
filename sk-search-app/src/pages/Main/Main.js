@@ -69,10 +69,7 @@ export default function Main() {
         </div>
 
         <div className="center" style={{marginTop:20}}>
-        
-
-          <Search searchType="little" />
-
+          <Search searchType="little" mockData={mockDatainRedux[0].data} />
         </div>
       </div>
       <div className="newsContainer">

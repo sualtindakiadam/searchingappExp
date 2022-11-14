@@ -60,7 +60,7 @@ export default function News() {
                     <GrPrevious size={20} onClick={prevPage} />
 
                 </div>
-
+                <div className="newslistContiner">
                 {data.slice(first, last).map((d) => {
                     return (
                         < div className="newsItem"  >
@@ -68,7 +68,9 @@ export default function News() {
                             <p>{d.title}</p>
                         </div>)
                 })}
+                </div>
 
+         
                 <div className="nextPrewContainer">
                     <GrNext size={20} onClick={nextPage} />
                 </div>

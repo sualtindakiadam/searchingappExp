@@ -15,6 +15,11 @@
      
  
 }
+.newslistContiner{
+    @extend .center;
+   
+    width: 900px;
+}
 .container1{
 
    height: 300px;
