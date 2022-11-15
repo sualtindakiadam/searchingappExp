@@ -31,7 +31,7 @@ export default function AddNewRecord() {
         mockDatainRedux[0].data.push(dataForSave)
         //console.log(mockDatainRedux[0].data)
         dispatch(setMockData([mockDatainRedux[0]]))
-        localStorage.setItem(localDatabaseName, JSON.stringify(mockDatainRedux))
+        localStorage.setItem(localDatabaseName, JSON.stringify(mockDatainRedux[0]))
  
         /*return(
             <div className="alertContainer">
