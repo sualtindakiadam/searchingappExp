@@ -1,0 +1,27 @@
+@import '../../publics/ClassTypes.scss';
+
+
+.listItemContainer{
+    height: 50px;
+}
+
+.deneme {
+    @extend .center;
+    width: 500px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: lightgrey;
+    padding-bottom: 10px;   
+}
+
+.icon1{
+   
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+.nameDateContainer{
+    text-align: right;
+   
+}

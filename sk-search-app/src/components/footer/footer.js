@@ -2,26 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import office from "../../assets/office.jpg"
 import "./footer.scss"
-
 import { GoLocation } from "react-icons/go"
-
-
 import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <GoLocation size="20" className="icon1" />;
-
-
-
-
-
+const AnyReactComponent = ({ text }) => 
+<GoLocation size="20" className="icon1" />;
 export default function Footer() {
-
     const defaultProps = {
         center: {
             lat: 41.0191374555372,
             lng: 28.89094911170246
-
-
         },
         zoom: 15
     };
@@ -38,25 +27,16 @@ export default function Footer() {
                     E-posta: bilgi@tesodev.com</p>
             </div>
             <div className="mapContainer">
-
-
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "" }}//AIzaSyDgF7Vow2-IiDaHOCd9JWWsnPkpzYSlmb8
-
+                    bootstrapURLKeys={{ key: "AIzaSyDgF7Vow2-IiDaHOCd9JWWsnPkpzYSlmb8" }}//AIzaSyDgF7Vow2-IiDaHOCd9JWWsnPkpzYSlmb8
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
                 >
                     <AnyReactComponent
                         lat={defaultProps.center.lat}
                         lng={defaultProps.center.lng}
-
                     />
-
-
                 </GoogleMapReact>
-
-
-
             </div>
         </div>
     )

@@ -1,38 +1,48 @@
 import React, { useState } from "react";
-import Button from "../Button";
-import "./Search.scss"
-import {setSearchedData} from '../../redux/actions/setSearchedData'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
-
 import { BsSearch } from "react-icons/bs"
 import { GoLocation } from "react-icons/go"
+import { setSearchedData } from '../../redux/actions/setSearchedData'
+import Button from "../Button";
+import RecordListItem from "../RecordListItem/RecordListItem";
+import "./Search.scss"
 export default function Search(props) {
     const dispatch = useDispatch()
-    const searchedData = useSelector(state=> state.getSearchedData)
-    const [searched, setSearched] = useState([])
+    const searchedData = useSelector(state => state.getSearchedData)
+    const data = useSelector(state => state.getMockData)[0].data
+
+
     const navigate = useNavigate()
 
 
-    const searchBtnClk = () => {
-        console.log("searched")
-        console.log(searchedData);
-
-
-        dispatch(setSearchedData(props.mockData.filter((mockData) => {
-            //return mockData[0].toLowerCase().startsWith(searched.toLowerCase()); //başından aramak için
-            return mockData[0].toLowerCase().includes(searched.toLowerCase()); //içinde aramak için
-
-        })))
-
-    }
-
     const showMore = () => {
-        navigate('/RecordList')
+        if (searchedData.length > 3) {
+            navigate('/RecordList')
+        } else {
+            alert("Searched^ten büyük olmalı")
+        }
     }
 
+    const search = (value) => {
+        console.log(value.length);
+        console.log(data);
+
+        if (value.length > 2) {
+            dispatch(setSearchedData(data.filter((mockData) => {
+                //return mockData[0].toString().toLowerCase().startsWith(value.toLowerCase()); //başından aramak için
+                return mockData[0].toString().toLowerCase().includes(value.toLowerCase()); //içinde aramak için
+
+            })))
+        }else{
+            dispatch(setSearchedData([]))
+        }
+
+
+
+
+    }
     return (
         <div>
             <center >
@@ -47,58 +57,25 @@ export default function Search(props) {
                         type='text'
                         placeholder="Search"
                         className='searchInput'
-                        onChange={(e) => setSearched(e.target.value)}  >
+                        onChange={(e) => search(e.target.value)}  >
                     </input>
-                    <Button text="Search" func={() => searchBtnClk()} />
+                    <Button text="Search" func={() => showMore()} />
                 </div>
             </center>
-
             {searchedData.length > 0 && props.searchType == "little" ?
                 <div className="searchedArea" >
-
                     <div className="searchedItem">
-
-                        {searchedData.slice(0, 3).map((d) => {
-                            return (<div className="listItemContainer">
-                                <div className="deneme" >
-                                    <GoLocation size="20" className="icon1" />
-                                    <div style={{ flex: 1 }}>
-                                        <text style={{ fontSize: 15 }}>
-                                            {d[1]}
-                                        </text>
-                                        <br />
-                                        <text style={{ fontSize: 15, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
-                                            {d[5]}, {d[4]}
-                                        </text>
-                                    </div>
-                                    <div className="nameDateContainer">
-                                        <text style={{ fontSize: 13, fontFamily: 'initial', color: 'rgba(0,0,0,0.4)' }}>
-                                            {d[0]}<br />{d[3]}
-                                        </text>
-                                    </div>
-                                </div>
-                            </div>)
-                        })}
-
-
+                        <RecordListItem
+                            startIndex={0}
+                            endIndex={3}
+                        />
                     </div>
-
-                    <div className="showMore" onClick={() => showMore()}>
-                        Show more...
-                    </div>
-
-
-
+                    {searchedData.length > 3 ?
+                        < div className="showMore" onClick={() => showMore()}>
+                            Show more...
+                        </div> : null}
                 </div> : null
-
             }
-
-
-
-
-        </div>
-
-
-
+        </div >
     )
 }

@@ -34,6 +34,7 @@ $dark-blue: #002e79;
     right: 0px;
     padding: 1em;
     background-color: $light-blue;
+    min-width: 1500px;
 
 }
 
@@ -58,8 +59,6 @@ $dark-blue: #002e79;
     font-weight: 700;
     border-radius: 9px;
     height: 30px;
-
-
     &:hover {
         background-color: $light-blue;
     }
@@ -68,7 +67,6 @@ $dark-blue: #002e79;
 
 .image {
     border-radius: 0px 10px 0px 10px;
-
 }
 
 

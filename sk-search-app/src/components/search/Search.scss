@@ -3,6 +3,7 @@
 .searchedItem {
     margin-top: 10px;
     margin-inline: 50px;
+    height: 150px;
     
 }
 
@@ -19,21 +20,8 @@
 }
 
 
-.deneme {
-    @extend .center;
-    width: 500px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: lightgrey;
-    padding-bottom: 10px;   
-}
 
-.icon1{
-   
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 10px;
-}
+
 
 .searchIcon {
     position: relative;

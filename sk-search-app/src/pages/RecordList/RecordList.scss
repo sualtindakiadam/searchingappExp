@@ -34,13 +34,7 @@ align-items: center;
    
 }
 
-.listItemContainer{
-    height: 50px;
-}
-.nameDateContainer{
-    text-align: right;
-   
-}
+
 .paginationContainer{
     @extend .center;
     margin-top: 20px;
