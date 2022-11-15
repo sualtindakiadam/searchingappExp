@@ -2,37 +2,32 @@
 @import '../../publics/ClassTypes.scss';
 
 .newsItem{
-    
     width: 200px;
-    
+    opacity: 1;
+    transition-property: margin-top,opacity;
+    transition-duration:1s ; 
 }
 
 .newsContainer{
     @extend .center;
-     left: 0px;
-     right: 0px;
+    align-items: center
+
 }
 .newslistContiner{
     @extend .center;
+    align-items: center;
     width: 800px;
 }
-.container1{
-
-   height: 300px;
-    width: 100%;
-    padding: 20px;
-}
-
-
 
 .nextPrewContainer{
-    width: 30px;;
-    height: 30px;
     @extend .center;
     align-items: center;
+    width: 30px;;
+    height: 30px;
     background-color:rgb(212, 206, 206);
-    border-radius: 100px;
-    
+    border-radius: 100px;  
+    margin-top: -50px;
 }
+
 
 

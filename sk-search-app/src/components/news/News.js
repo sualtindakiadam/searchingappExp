@@ -23,22 +23,24 @@ export default function News() {
         }
     }
     const nextPage = () => {
+       
         if (data.length - last > 0) {
             setFirst(last)
             setLast(last + 4)
-        }
+        }  
+        
     }
     return (
-        <div className="container1">
-            <h1>Top News</h1>
+        <div >
+            <h1 style={{paddingLeft:0}}>Top News</h1>
             <div className="newsContainer" >
                 <div className="nextPrewContainer">
                     <GrPrevious size={20} onClick={prevPage} />
                 </div>
-                <div className="newslistContiner">
+                <div  className="newslistContiner">
                     {data.slice(first, last).map((d) => {
                         return (
-                            < div className="newsItem"  >
+                            < div className="newsItem"   >
                                 <img src={d.image} className="officeImage" />
                                 <p>{d.title}</p>
                             </div>)

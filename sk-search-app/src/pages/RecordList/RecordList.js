@@ -68,21 +68,21 @@ export default function RecordList() {
             case 3:
                 console.log("name desc order by");
                 //console.log(searchedData.sort((a, b) => { return a[3].toString().toLowerCase() > b[3].toString().toLowerCase() }));
-                 console.log(searchedData.sort(function (a, b) {
-                                   const datea = moment(a[3]).format('YYY/MM/DD')
-                                   const dateb = moment(b[3]).format('YYY/MM/DD')
-                                   console.log(datea, " ------ ", dateb);
-                                   return datea > dateb
-                               }));
+                console.log(searchedData.sort(function (a, b) {
+                    const datea = moment(a[3]).format('YYY/MM/DD')
+                    const dateb = moment(b[3]).format('YYY/MM/DD')
+                    console.log(datea, " ------ ", dateb);
+                    return dateb > datea
+                }));
                 break;
             case 4:
                 console.log("name desc order by");
-                /* setData(searchedData.sort(function (a, b) {
-                     const datea = moment(a[3]).format('YYY/MM/DD')
-                     const dateb = moment(b[3]).format('YYY/MM/DD')
-                     console.log(datea, " ------ ", dateb);
-                     return dateb > datea
-                 }));*/
+                console.log(searchedData.sort(function (a, b) {
+                    const datea = moment(a[3]).format('YYY/MM/DD')
+                    const dateb = moment(b[3]).format('YYY/MM/DD')
+                    console.log(datea, " ------ ", dateb);
+                    return dateb < datea
+                }));
                 break;
             default:
                 break;
@@ -90,8 +90,8 @@ export default function RecordList() {
     }
     return (
         <div>
-            <div className="headerContainer1">
-                <div className="logoContainer1">
+            <div className="headerCont">
+                <div className="logoCont">
                     <TesodevLogo />
                 </div>
                 <div className="searchContainer1">
@@ -118,35 +118,38 @@ export default function RecordList() {
             </div>
             <div className="listBodyContainer">
                 <div>
-                    <div className="fullListContainer">
+                    <div >
                         <RecordListItem
                             startIndex={pageSize * selectedPage}
                             endIndex={pageSize * (selectedPage + 1)}
                         />
                     </div>
-                    <div className="paginationContainer">
-                        <div className="nextPrewContainer">
-                            <GrPrevious onClick={() => prevClick()} />
-                        </div>
+                    {totalPage > 1 ? <div className="paginationContainer">
+
+                        <div 
+                        className="nextPrev"
+                        onClick={() => prevClick()}>Previous</div>
+
+
                         {searchedData.slice(0, totalPage).map((d, index) => {
                             if ((index < selectedPage + 3 && index > selectedPage - 3) || index == totalPage - 1 || index == 0) {
                                 return (<div
-                                    style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }}
+                                    style={index == selectedPage ? { backgroundColor: '#002e79' , color:'white' }:{}}
                                     className="pageNumberContainer"
                                     onClick={() => setSelectedPage(index)}>
                                     {index + 1}
                                 </div>)
                             } else if (index == totalPage - 2 || index == 1) { return <div>...</div> }
                         })}
-                        <div className="nextPrewContainer">
-                            <GrNext onClick={() => nextClick()} />
-                        </div>
-                    </div>
+                        <div 
+                        className="nextPrev"
+                        onClick={() => nextClick()}>Next</div>
+
+
+                    </div> : null}
                 </div>
             </div>
-            <div className="footer">
-                <Footer />
-            </div>
+            
         </div>
     )
 }

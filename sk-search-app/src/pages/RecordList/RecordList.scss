@@ -1,31 +1,36 @@
 @import '../../publics/ClassTypes.scss';
 
+$widthNumber:25px;
 
-.headerContainer1{
+.headerCont{
  
-    display: flex;
-align-items: center;
+    @extend .center;
+    align-items: center;
     padding-inline: 10px;
+    height: 120px;
 }
 
 
-.logoContainer1{
-
+.logoCont{
     @extend .start;
     height: 50px;
+    width: 20%;
 
 }
 
 .searchContainer1{
-    @extend .center;
+    @extend .start;
     align-items: center;
+    width: 50%;
 
     height: 100px;
+
 }
 
 .addNewContainer1{
-    position: fixed;
-    right: 0px;  
+    @extend .end;
+    width: 40%;
+    
 }
 
 .listBodyContainer{
@@ -37,38 +42,41 @@ align-items: center;
 
 .paginationContainer{
     @extend .center;
+    align-items: center;
     margin-top: 20px;
    
 }
 
-.fullListContainer{
-    height: 500px;
-}
+
 .pageNumberContainer{
     @extend .center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    height: $widthNumber;
+    width: $widthNumber;
     border: 1px;
     border-color: darkgrey;
     border-style: solid;
-    margin: 3px;
+    margin: 5px;
     border-radius: 5px;
-    
-
 }
-.nextPrewContainer{
+
+.orderByContainer{
+    @extend .end;
+    position: fixed;
+    width: 90%;
+
+    
+}
+.nextPrev{
     @extend .center;
     align-items: center;
-    margin-inline: 20px;
-   
-}
-.orderByContainer{
-    right: 10%;
-    position: fixed;
-    
-}
+   border-width: 1px;
+   border-style: solid;
+   border-radius: 5px;
+   padding-inline:20px ;
+   height: $widthNumber;
 
+}
 .orderListContainer{
     margin-top: 10px;
     width: 150px;
@@ -93,7 +101,4 @@ align-items: center;
     
 }
 
-.orderByContainer{
-    
-}
 

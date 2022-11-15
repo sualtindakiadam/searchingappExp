@@ -12,7 +12,7 @@ export default function RecordListItem(props) {
     return (
         <div>
 
-            <div className="listItemContainer">
+            <div >
                 {data.slice(props.startIndex, props.endIndex).map((d) => {
                     return (<div className="deneme" >
                         <GoLocation size="20" className="icon1" />

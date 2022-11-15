@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setMockData } from "../../redux/actions/setMocData";
 import MockData from "../../mockData.json"
-import "../../publics/ClassTypes.scss"
 import TesodevLogo from "../../components/TesodevLogo";
 import Button from "../../components/Button";
 import Search from "../../components/search/Search";
 import Footer from "../../components/footer/footer";
 import News from "../../components/news/News";
-
+import "./Main.scss"
 import { localDatabaseName } from "../../publics/EnumText";
 
 
@@ -44,7 +43,7 @@ export default function Main() {
   }
   return (
     <div >
-      <div className="bodyContainer">
+      <div className="bodyContainer1">
         <div className="end">
           <Button text="Add new record" func={addNewRecord} />
         </div>
@@ -55,10 +54,11 @@ export default function Main() {
           <Search searchType="little" />
         </div>
       </div>
-      <div className="newsContainer">
+      
+      <div className="mainNewsCont">
         <News />
       </div>
-      <div className="footer">
+      <div className="footer1">
         <Footer />
       </div>
     </div>
