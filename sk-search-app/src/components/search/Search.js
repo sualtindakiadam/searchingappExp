@@ -71,7 +71,7 @@ export default function Search(props) {
                         />
                     </div>
                     {searchedData.length > 0 ? // koşul
-                        < div className="showMore" onClick={() => showMore()}>
+                        < div className="showMore" onClick={() => showMore()} style={{cursor:'pointer'}}>
                             Show more...
                         </div> : null}
                 </div> : null

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go"
 import { GrNext, GrPrevious } from "react-icons/gr"
@@ -18,11 +18,11 @@ export default function RecordList() {
     const pageSize = 10;
     const totalPage = Math.ceil(searchedData.length / pageSize)
     const [selectedPage, setSelectedPage] = useState(0)
-    
+
     const [orderBy, setOrderBy] = useState([
-        "Order by", "Name Ascending", 
-        "Name Descending", 
-        "Year Ascending", 
+        "Order by", "Name Ascending",
+        "Name Descending",
+        "Year Ascending",
         "Year Descending"])
     const [orderType, setOrderType] = useState(0)
     const [enabledOrderByList, setEnabledOrderByList] = useState(false)
@@ -57,34 +57,32 @@ export default function RecordList() {
             case 1:
                 console.log("name asc order by");
                 console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() > b[0].toString().toLowerCase() }));
-              //  setData(searchedData.sort())
+                //  setData(searchedData.sort())
                 break;
             case 2:
                 console.log("name desc order by");
                 console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() < b[0].toString().toLowerCase() }));
 
-               // setData(searchedData.sort((a, b) => { return b > a }));
+                // setData(searchedData.sort((a, b) => { return b > a }));
                 break;
             case 3:
                 console.log("name desc order by");
                 //console.log(searchedData.sort((a, b) => { return a[3].toString().toLowerCase() > b[3].toString().toLowerCase() }));
-
-
-               searchedData.sort(function (a, b) {
-                    const datea = moment(a[3]).format('YYY/MM/DD')
-                    const dateb = moment(b[3]).format('YYY/MM/DD')
-                    console.log(datea, " ------ ", dateb);
-                    return datea > dateb
-                })
+                 console.log(searchedData.sort(function (a, b) {
+                                   const datea = moment(a[3]).format('YYY/MM/DD')
+                                   const dateb = moment(b[3]).format('YYY/MM/DD')
+                                   console.log(datea, " ------ ", dateb);
+                                   return datea > dateb
+                               }));
                 break;
             case 4:
                 console.log("name desc order by");
-               /* setData(searchedData.sort(function (a, b) {
-                    const datea = moment(a[3]).format('YYY/MM/DD')
-                    const dateb = moment(b[3]).format('YYY/MM/DD')
-                    console.log(datea, " ------ ", dateb);
-                    return dateb > datea
-                }));*/
+                /* setData(searchedData.sort(function (a, b) {
+                     const datea = moment(a[3]).format('YYY/MM/DD')
+                     const dateb = moment(b[3]).format('YYY/MM/DD')
+                     console.log(datea, " ------ ", dateb);
+                     return dateb > datea
+                 }));*/
                 break;
             default:
                 break;
