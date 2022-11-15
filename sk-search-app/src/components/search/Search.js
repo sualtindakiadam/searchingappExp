@@ -18,7 +18,7 @@ export default function Search(props) {
 
 
     const showMore = () => {
-        if (searchedData.length > 3) {
+        if (searchedData.length > 0) { // koşul
             navigate('/RecordList')
         } else {
             alert("Searched^ten büyük olmalı")
@@ -29,7 +29,7 @@ export default function Search(props) {
         console.log(value.length);
         console.log(data);
 
-        if (value.length > 2) {
+        if (value.length > 0 ) { // koşul
             dispatch(setSearchedData(data.filter((mockData) => {
                 //return mockData[0].toString().toLowerCase().startsWith(value.toLowerCase()); //başından aramak için
                 return mockData[0].toString().toLowerCase().includes(value.toLowerCase()); //içinde aramak için
@@ -70,7 +70,7 @@ export default function Search(props) {
                             endIndex={3}
                         />
                     </div>
-                    {searchedData.length > 3 ?
+                    {searchedData.length > 0 ? // koşul
                         < div className="showMore" onClick={() => showMore()}>
                             Show more...
                         </div> : null}

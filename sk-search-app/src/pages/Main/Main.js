@@ -10,25 +10,27 @@ import Search from "../../components/search/Search";
 import Footer from "../../components/footer/footer";
 import News from "../../components/news/News";
 
+import { localDatabaseName } from "../../publics/EnumText";
+
 
 export default function Main() {
   const navigate = useNavigate()
   const mockDatainRedux = useSelector(state => state.getMockData)
   const dispatch = useDispatch()
-  const LSName = "zz"
-  const firstOpen = () => {
+  
+  const  firstOpen = () => {
     console.log("yerelden çekildi");
-    const localData = JSON.parse(localStorage.getItem(LSName))
+    const localData = JSON.parse(localStorage.getItem(localDatabaseName))
     console.log(mockDatainRedux);
     if (mockDatainRedux[1] == null ) {
       if (localData == null) {
         console.log("Local data boş ")
-        localStorage.setItem(LSName, JSON.stringify(MockData))
+        localStorage.setItem(localDatabaseName, JSON.stringify(MockData))
         dispatch(setMockData([MockData]))
       } else {
         console.log("dolu local")
         console.log(mockDatainRedux);
-        dispatch(setMockData(localData))
+        dispatch(setMockData([localData]))
       }
     } else {
       console.log("mockDatainRedux boş değil")

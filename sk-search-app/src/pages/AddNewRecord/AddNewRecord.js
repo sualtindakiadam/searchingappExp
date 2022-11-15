@@ -8,7 +8,10 @@ import "./AddNewRecord.scss"
 import Button from "../../components/Button";
 import TesodevLogo from "../../components/TesodevLogo";
 import AlertComp from "../../components/alert/AlertComp";
-require('react-datepicker/dist/react-datepicker.css')
+
+import { localDatabaseName } from "../../publics/EnumText";
+
+//require('react-datepicker/dist/react-datepicker.css')
 const titles = ([
     { id: 0, title: "Name Surname", minChar: "4", maxChar: "60", inputType: "text" },
     { id: 1, title: "Company", minChar: "4", maxChar: "60", inputType: "text" },
@@ -28,7 +31,7 @@ export default function AddNewRecord() {
         mockDatainRedux[0].data.push(dataForSave)
         //console.log(mockDatainRedux[0].data)
         dispatch(setMockData([mockDatainRedux[0]]))
-        localStorage.setItem("zz", JSON.stringify(mockDatainRedux))
+        localStorage.setItem(localDatabaseName, JSON.stringify(mockDatainRedux))
  
         /*return(
             <div className="alertContainer">

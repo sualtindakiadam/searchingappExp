@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go"
 import { GrNext, GrPrevious } from "react-icons/gr"
@@ -10,11 +10,13 @@ import Search from "../../components/search/Search";
 import Button from "../../components/Button";
 import Footer from "../../components/footer/footer";
 import RecordListItem from "../../components/RecordListItem/RecordListItem";
+import { setSearchedData } from "../../redux/actions/setSearchedData";
 export default function RecordList() {
     const navigate = useNavigate()
-    const data = useSelector(state => state.getSearchedData)
+    const dispatch = useDispatch()
+    const searchedData = useSelector(state => state.getSearchedData)
     const pageSize = 10;
-    const totalPage = Math.ceil(data.length / pageSize)
+    const totalPage = Math.ceil(searchedData.length / pageSize)
     const [selectedPage, setSelectedPage] = useState(0)
     
     const [orderBy, setOrderBy] = useState([
@@ -54,24 +56,30 @@ export default function RecordList() {
         switch (orderById) {
             case 1:
                 console.log("name asc order by");
-              //  setData(data.sort())
+                console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() > b[0].toString().toLowerCase() }));
+              //  setData(searchedData.sort())
                 break;
             case 2:
                 console.log("name desc order by");
-               // setData(data.sort((a, b) => { return b > a }));
+                console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() < b[0].toString().toLowerCase() }));
+
+               // setData(searchedData.sort((a, b) => { return b > a }));
                 break;
             case 3:
                 console.log("name desc order by");
-               /* setData(data.sort(function (a, b) {
+                //console.log(searchedData.sort((a, b) => { return a[3].toString().toLowerCase() > b[3].toString().toLowerCase() }));
+
+
+               searchedData.sort(function (a, b) {
                     const datea = moment(a[3]).format('YYY/MM/DD')
                     const dateb = moment(b[3]).format('YYY/MM/DD')
                     console.log(datea, " ------ ", dateb);
                     return datea > dateb
-                }));*/
+                })
                 break;
             case 4:
                 console.log("name desc order by");
-               /* setData(data.sort(function (a, b) {
+               /* setData(searchedData.sort(function (a, b) {
                     const datea = moment(a[3]).format('YYY/MM/DD')
                     const dateb = moment(b[3]).format('YYY/MM/DD')
                     console.log(datea, " ------ ", dateb);
@@ -122,7 +130,7 @@ export default function RecordList() {
                         <div className="nextPrewContainer">
                             <GrPrevious onClick={() => prevClick()} />
                         </div>
-                        {data.slice(0, totalPage).map((d, index) => {
+                        {searchedData.slice(0, totalPage).map((d, index) => {
                             if ((index < selectedPage + 3 && index > selectedPage - 3) || index == totalPage - 1 || index == 0) {
                                 return (<div
                                     style={{ backgroundColor: index == selectedPage ? '#008CBA' : null }}
