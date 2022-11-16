@@ -1,20 +1,14 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from 'react-redux'
-
 import { GoLocation } from "react-icons/go"
 import "./RecordListItem.scss"
-
-
-
 export default function RecordListItem(props) {
     const data = useSelector(state => state.getSearchedData)
-
     return (
         <div>
-
             <div >
                 {data.slice(props.startIndex, props.endIndex).map((d) => {
-                    return (<div className="deneme" >
+                    return (<div className="cont" >
                         <GoLocation size="20" className="icon1" />
                         <div style={{ flex: 1 }}>
                             <text style={{ fontSize: 15 }}>
@@ -31,10 +25,9 @@ export default function RecordListItem(props) {
                             </text>
                         </div>
                     </div>
-                    )})}
+                    )
+                })}
             </div>
-
         </div>
-
     )
 }

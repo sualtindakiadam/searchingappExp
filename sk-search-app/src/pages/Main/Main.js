@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setMockData } from "../../redux/actions/setMocData";
@@ -10,13 +10,10 @@ import Footer from "../../components/footer/footer";
 import News from "../../components/news/News";
 import "./Main.scss"
 import { localDatabaseName } from "../../publics/EnumText";
-
-
 export default function Main() {
   const navigate = useNavigate()
   const mockDatainRedux = useSelector(state => state.getMockData)
   const dispatch = useDispatch()
-  
   const  firstOpen = () => {
     console.log("yerelden çekildi");
     const localData = JSON.parse(localStorage.getItem(localDatabaseName))
@@ -54,7 +51,6 @@ export default function Main() {
           <Search searchType="little" />
         </div>
       </div>
-      
       <div className="mainNewsCont">
         <News />
       </div>

@@ -8,7 +8,6 @@ $height: 180px;
     height: $height;
     margin: 10px;
 }
-
 .footerContainer {
     display: flex;
     align-items: center; 
@@ -19,23 +18,16 @@ $height: 180px;
     display: flex;
     align-items: center;  
 }
-
 .infoContainer {
     color: white;
 }
-
 .mapContainer {
     display: flex;
     align-items:flex-end;
     justify-items: end;
     bottom: 0cm;
     right: 0cm;
- 
     margin-left: 10px;
     height: $height;
     width: 55%;
-
-   
-
-
 }

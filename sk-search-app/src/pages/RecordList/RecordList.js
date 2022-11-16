@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import { GoLocation } from "react-icons/go"
-import { GrNext, GrPrevious } from "react-icons/gr"
 import "./RecordList.scss"
 import moment from 'moment'
 import TesodevLogo from "../../components/TesodevLogo";
 import Search from "../../components/search/Search";
 import Button from "../../components/Button";
-import Footer from "../../components/footer/footer";
 import RecordListItem from "../../components/RecordListItem/RecordListItem";
-import { setSearchedData } from "../../redux/actions/setSearchedData";
 export default function RecordList() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -18,7 +14,6 @@ export default function RecordList() {
     const pageSize = 10;
     const totalPage = Math.ceil(searchedData.length / pageSize)
     const [selectedPage, setSelectedPage] = useState(0)
-
     const [orderBy, setOrderBy] = useState([
         "Order by", "Name Ascending",
         "Name Descending",
@@ -52,37 +47,26 @@ export default function RecordList() {
     const changeOrderBy = (orderById) => {
         setEnabledOrderByList(!enabledOrderByList)
         setOrderType(orderById)
-        console.log("change order by ")
+        console.log(orderById)
         switch (orderById) {
             case 1:
                 console.log("name asc order by");
                 console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() > b[0].toString().toLowerCase() }));
-                //  setData(searchedData.sort())
                 break;
             case 2:
                 console.log("name desc order by");
                 console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() < b[0].toString().toLowerCase() }));
-
-                // setData(searchedData.sort((a, b) => { return b > a }));
                 break;
             case 3:
-                console.log("name desc order by");
+                console.log("date asc order by");
                 //console.log(searchedData.sort((a, b) => { return a[3].toString().toLowerCase() > b[3].toString().toLowerCase() }));
-                console.log(searchedData.sort(function (a, b) {
-                    const datea = moment(a[3]).format('YYY/MM/DD')
-                    const dateb = moment(b[3]).format('YYY/MM/DD')
-                    console.log(datea, " ------ ", dateb);
-                    return dateb > datea
-                }));
+                console.log(searchedData.sort((a, b) =>
+                    a[3].split('/').reverse().join().localeCompare(b[3].split('/').reverse().join())));
                 break;
             case 4:
-                console.log("name desc order by");
-                console.log(searchedData.sort(function (a, b) {
-                    const datea = moment(a[3]).format('YYY/MM/DD')
-                    const dateb = moment(b[3]).format('YYY/MM/DD')
-                    console.log(datea, " ------ ", dateb);
-                    return dateb < datea
-                }));
+                console.log("date desc order by");
+                console.log(searchedData.sort((a, b) =>
+                    b[3].split('/').reverse().join().localeCompare(a[3].split('/').reverse().join())));
                 break;
             default:
                 break;
@@ -125,31 +109,25 @@ export default function RecordList() {
                         />
                     </div>
                     {totalPage > 1 ? <div className="paginationContainer">
-
-                        <div 
-                        className="nextPrev"
-                        onClick={() => prevClick()}>Previous</div>
-
-
+                        <div
+                            className="nextPrev"
+                            onClick={() => prevClick()}>Previous</div>
                         {searchedData.slice(0, totalPage).map((d, index) => {
                             if ((index < selectedPage + 3 && index > selectedPage - 3) || index == totalPage - 1 || index == 0) {
                                 return (<div
-                                    style={index == selectedPage ? { backgroundColor: '#002e79' , color:'white' }:{}}
+                                    style={index == selectedPage ? { backgroundColor: '#002e79', color: 'white' } : {}}
                                     className="pageNumberContainer"
                                     onClick={() => setSelectedPage(index)}>
                                     {index + 1}
                                 </div>)
                             } else if (index == totalPage - 2 || index == 1) { return <div>...</div> }
                         })}
-                        <div 
-                        className="nextPrev"
-                        onClick={() => nextClick()}>Next</div>
-
-
+                        <div
+                            className="nextPrev"
+                            onClick={() => nextClick()}>Next</div>
                     </div> : null}
                 </div>
             </div>
-            
         </div>
     )
 }

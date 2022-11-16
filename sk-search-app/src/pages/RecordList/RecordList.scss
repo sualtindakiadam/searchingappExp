@@ -1,9 +1,9 @@
 @import '../../publics/ClassTypes.scss';
 
-$widthNumber:25px;
+$widthNumber: 25px;
 
-.headerCont{
- 
+.headerCont {
+
     @extend .center;
     align-items: center;
     padding-inline: 10px;
@@ -11,44 +11,38 @@ $widthNumber:25px;
 }
 
 
-.logoCont{
+.logoCont {
     @extend .start;
     height: 50px;
     width: 20%;
-
 }
 
-.searchContainer1{
+.searchContainer1 {
     @extend .start;
     align-items: center;
     width: 50%;
-
     height: 100px;
-
 }
 
-.addNewContainer1{
+.addNewContainer1 {
     @extend .end;
     width: 40%;
-    
 }
 
-.listBodyContainer{
+.listBodyContainer {
     @extend .center;
     margin-top: 30px;
-   
 }
 
 
-.paginationContainer{
+.paginationContainer {
     @extend .center;
     align-items: center;
     margin-top: 20px;
-   
 }
 
 
-.pageNumberContainer{
+.pageNumberContainer {
     @extend .center;
     align-items: center;
     height: $widthNumber;
@@ -60,24 +54,24 @@ $widthNumber:25px;
     border-radius: 5px;
 }
 
-.orderByContainer{
+.orderByContainer {
     @extend .end;
     position: fixed;
     width: 90%;
-
-    
 }
-.nextPrev{
+
+.nextPrev {
     @extend .center;
     align-items: center;
-   border-width: 1px;
-   border-style: solid;
-   border-radius: 5px;
-   padding-inline:20px ;
-   height: $widthNumber;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding-inline: 20px;
+    height: $widthNumber;
 
 }
-.orderListContainer{
+
+.orderListContainer {
     margin-top: 10px;
     width: 150px;
     padding: 10px;
@@ -85,7 +79,8 @@ $widthNumber:25px;
     border-color: darkgray;
     border-style: solid;
     border-radius: 10px;
-    :hover{
+
+    :hover {
         background-color: darkgray;
         border-radius: 10px;
         @extend .center;
@@ -93,12 +88,10 @@ $widthNumber:25px;
     }
 }
 
-.orderByItemContainer{
+.orderByItemContainer {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: lightgrey;
-    margin-bottom: 3px;;
+    margin-bottom: 3px;
     
 }
-
-

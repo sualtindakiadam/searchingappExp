@@ -1,15 +1,14 @@
 @import '../../publics/ClassTypes.scss';
 
-.containerMain{
+.containerMain {
     @extend .center;
 }
 
-
 .bodyContainer1 {
-   position: fixed;
+    position: fixed;
 
     padding: 10px;
-  
+
     top: 0%;
     left: 0%;
     right: 0%;
@@ -17,8 +16,7 @@
 
 .mainNewsCont {
     @extend .center;
-   position: fixed;
-    
+    position: fixed;
     bottom: 25%;
     left: 0%;
     right: 0%;
@@ -26,11 +24,9 @@
 
 .footer1 {
     position: fixed;
-     padding: 20px;
-     background-color: $light-blue;
-   
-
-     bottom: 0%;
-     left: 0%;
-     right: 0%;
- }
+    padding: 20px;
+    background-color: $light-blue;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+}

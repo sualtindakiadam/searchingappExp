@@ -1,1 +1,1 @@
-export const localDatabaseName = "g"; 
+export const localDatabaseName = "LocalStorage"; 

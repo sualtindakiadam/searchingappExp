@@ -12,36 +12,21 @@ export default function Search(props) {
     const dispatch = useDispatch()
     const searchedData = useSelector(state => state.getSearchedData)
     const data = useSelector(state => state.getMockData)[0].data
-
-
     const navigate = useNavigate()
-
-
     const showMore = () => {
-        if (searchedData.length > 0) { // koşul
-            navigate('/RecordList')
-        } else {
-            alert("Searched^ten büyük olmalı")
-        }
+        navigate('/RecordList')
     }
-
     const search = (value) => {
         console.log(value.length);
         console.log(data);
-
-        if (value.length > 0 ) { // koşul
+        if (value.length > 2) {
             dispatch(setSearchedData(data.filter((mockData) => {
-                //return mockData[0].toString().toLowerCase().startsWith(value.toLowerCase()); //başından aramak için
-                return mockData[0].toString().toLowerCase().includes(value.toLowerCase()); //içinde aramak için
-
+                return mockData[0].toString().toLowerCase().startsWith(value.toLowerCase()); //başından aramak için
+                //return mockData[0].toString().toLowerCase().includes(value.toLowerCase()); //içinde aramak için
             })))
-        }else{
+        } else {
             dispatch(setSearchedData([]))
         }
-
-
-
-
     }
     return (
         <div>
@@ -70,8 +55,8 @@ export default function Search(props) {
                             endIndex={3}
                         />
                     </div>
-                    {searchedData.length > 0 ? // koşul
-                        < div className="showMore" onClick={() => showMore()} style={{cursor:'pointer'}}>
+                    {searchedData.length > 2 ?
+                        < div className="showMore" onClick={() => showMore()} style={{ cursor: 'pointer' }}>
                             Show more...
                         </div> : null}
                 </div> : null

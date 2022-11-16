@@ -1,9 +1,6 @@
 $light-blue: #008CBA;
 $dark-blue: #002e79;
 
-.container {    
-}
-
 .bodyContainer {    
     position:fixed;
     top: 0px;
@@ -14,7 +11,11 @@ $dark-blue: #002e79;
 .center {
     display: flex;
     justify-content: center;
- 
+}
+.centerPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .start {
@@ -37,12 +38,6 @@ $dark-blue: #002e79;
     min-width: 1500px;
 
 }
-
-
-
-
-
-
 .button {
     background-color: $dark-blue;
     border: none;
@@ -61,11 +56,6 @@ $dark-blue: #002e79;
 .image {
     border-radius: 0px 10px 0px 10px;
 }
-
-
-
-
-
 
 .searchInput {
     border-style: solid;

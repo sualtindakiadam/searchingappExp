@@ -7,35 +7,29 @@
     padding: 2em; 
     display: flex;
 }
-
 .back{
     @extend .center;
 }
-
 .formContainer{
     @extend .center;
 }
-
 .formItemContainer{
     margin-bottom: 10px;
 }
-
 .input{
     width: 300px;
     height: 30px;
     border-radius: 7px;
     padding-inline: 10px;
     margin-top: 7px;
-
 }
-
 .addContainer{
     @extend .end;
 }
-
 .alertContainer{
     @extend .end;
-   
+    align-items: flex-end;
+   margin:20px
 }
 .errorLabel{
     font-size: 10px;

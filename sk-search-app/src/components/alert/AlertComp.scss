@@ -1,0 +1,26 @@
+@import '../../publics/ClassTypes.scss';
+
+.alertCont { 
+    background-color: rgb(207, 207, 207);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+}
+.textCont {
+    @extend .centerPage;
+}
+.iconCont {
+    @extend .centerPage;
+    width: 100px;
+    background-color: rgb(254, 85, 113);
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 20px;
+    color: white;
+    background-color: orange;
+}
+.exitBtn {
+    @extend .end;
+    align-items: flex-start;
+    height: 50%;   
+}
