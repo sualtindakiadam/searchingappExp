@@ -17,8 +17,6 @@ export default function Search(props) {
         navigate('/RecordList')
     }
     const search = (value) => {
-        console.log(value.length);
-        console.log(data);
         if (value.length > 2) {
             dispatch(setSearchedData(data.filter((mockData) => {
                 return mockData[0].toString().toLowerCase().startsWith(value.toLowerCase()); //başından aramak için

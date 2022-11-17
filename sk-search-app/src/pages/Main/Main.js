@@ -15,22 +15,15 @@ export default function Main() {
   const mockDatainRedux = useSelector(state => state.getMockData)
   const dispatch = useDispatch()
   const  firstOpen = () => {
-    console.log("yerelden çekildi");
     const localData = JSON.parse(localStorage.getItem(localDatabaseName))
-    console.log(mockDatainRedux);
     if (mockDatainRedux[1] == null ) {
       if (localData == null) {
-        console.log("Local data boş ")
         localStorage.setItem(localDatabaseName, JSON.stringify(MockData))
         dispatch(setMockData([MockData]))
       } else {
-        console.log("dolu local")
-        console.log(mockDatainRedux);
         dispatch(setMockData([localData]))
       }
-    } else {
-      console.log("mockDatainRedux boş değil")
-    }
+    } 
   }
   useEffect(() => {
     firstOpen()

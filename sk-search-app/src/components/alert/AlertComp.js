@@ -3,8 +3,6 @@ import "./AlertComp.scss"
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 export default function AlertComp(props) {
     const [isOpen, setIsOpen] = useState(true);
-    console.log("AlertComp");
-    console.log(props.errorMessageList11);
     if(!isOpen){
         return null
     }else{
@@ -18,8 +16,6 @@ export default function AlertComp(props) {
                         <br />
                         <div>
                             {props.errorMessageList11.map((d,index)=>{
-                                console.log("d---------");
-                                console.log(d)
                                 if(d!=""){
                                 return(<div>
                                     - {d}

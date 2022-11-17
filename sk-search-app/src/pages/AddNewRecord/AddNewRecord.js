@@ -33,13 +33,11 @@ export default function AddNewRecord() {
         setErrorListtoSend([])
         for (var i = 0; i < titles.length; i++) {
             if (!dataForSave[i]) {
-                console.log("if")
                 enableError(i)
                 err = true
             }
         }
         if (!err) {
-            console.log("kayıt")
             mockDatainRedux.data.push(dataForSave)
             dispatch(setMockData([mockDatainRedux]))
             localStorage.setItem(localDatabaseName, JSON.stringify(mockDatainRedux))

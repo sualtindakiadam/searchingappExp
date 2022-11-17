@@ -24,19 +24,15 @@ export default function RecordList() {
     function addNewRecord(e) {
         navigate("/AddNewRecord")
     }
-    useEffect(() => {
-        console.log("totalpage");
-        console.log(totalPage)
-
-    });
+  
     const prevClick = () => {
-        console.log("prev");
+   
         if (selectedPage > 0) {
             setSelectedPage(selectedPage - 1)
         }
     }
     const nextClick = () => {
-        console.log(selectedPage);
+  
         if (selectedPage < totalPage - 1) {
             setSelectedPage(selectedPage + 1)
         }
@@ -47,26 +43,22 @@ export default function RecordList() {
     const changeOrderBy = (orderById) => {
         setEnabledOrderByList(!enabledOrderByList)
         setOrderType(orderById)
-        console.log(orderById)
+   
         switch (orderById) {
             case 1:
-                console.log("name asc order by");
-                console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() > b[0].toString().toLowerCase() }));
+                searchedData.sort((a, b) => { return a[0].toString().toLowerCase() > b[0].toString().toLowerCase() });
                 break;
             case 2:
-                console.log("name desc order by");
-                console.log(searchedData.sort((a, b) => { return a[0].toString().toLowerCase() < b[0].toString().toLowerCase() }));
+                searchedData.sort((a, b) => { return a[0].toString().toLowerCase() < b[0].toString().toLowerCase() });
                 break;
             case 3:
-                console.log("date asc order by");
-                //console.log(searchedData.sort((a, b) => { return a[3].toString().toLowerCase() > b[3].toString().toLowerCase() }));
-                console.log(searchedData.sort((a, b) =>
-                    a[3].split('/').reverse().join().localeCompare(b[3].split('/').reverse().join())));
+                searchedData.sort((a, b) =>
+                    a[3].split('/').reverse().join().localeCompare(b[3].split('/').reverse().join()));
                 break;
             case 4:
-                console.log("date desc order by");
-                console.log(searchedData.sort((a, b) =>
-                    b[3].split('/').reverse().join().localeCompare(a[3].split('/').reverse().join())));
+
+                searchedData.sort((a, b) =>
+                    b[3].split('/').reverse().join().localeCompare(a[3].split('/').reverse().join()));
                 break;
             default:
                 break;
