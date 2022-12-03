@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
             <div className="mapContainer">
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyDgF7Vow2-IiDaHOCd9JWWsnPkpzYSlmb8" }}//AIzaSyDgF7Vow2-IiDaHOCd9JWWsnPkpzYSlmb8
+                    bootstrapURLKeys={{ key: "" }}// Enter your API key to GoogleMap 
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
                 >
